@@ -117,7 +117,14 @@ class Rss {
 				}
 				else
 				{
-					$elem_item->addChild($options[0], $vI);
+				    if (is_array($vI)) {
+		                        $item_child = $elem_item->addChild($options[0]);
+		                        foreach ($vI as $key => $value) {
+		                            $item_child->addAttribute($key, $value);
+		                        }
+		                    } else {
+		                        $elem_item->addChild($options[0], $vI);
+		                    }
 				}
 			}
 		}
